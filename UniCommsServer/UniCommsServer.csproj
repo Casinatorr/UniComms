@@ -43,8 +43,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Copying\Client.cs" />
+    <Compile Include="Copying\ClientHandle.cs" />
+    <Compile Include="Copying\ClientSend.cs" />
+    <Compile Include="Copying\Packet.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Server\Client.cs" />
+    <Compile Include="Server\Packet.cs" />
+    <Compile Include="Server\Server.cs" />
+    <Compile Include="Server\ServerHandle.cs" />
+    <Compile Include="Server\ServerSend.cs" />
+    <Compile Include="User\User.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
