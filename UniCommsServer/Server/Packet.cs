@@ -15,8 +15,7 @@ namespace UniCommsServer.Server
     /// <summary>Sent from client to server.</summary>
     public enum ClientPackets
     {
-        ping = 1,
-        login,
+        login = 1,
         knownUsers
     }
 

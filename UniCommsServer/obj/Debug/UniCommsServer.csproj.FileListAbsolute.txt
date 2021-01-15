@@ -5,3 +5,10 @@ C:\Users\Kids\mygit\UniComms\UniCommsServer\obj\Debug\UniCommsServer.csprojAssem
 C:\Users\Kids\mygit\UniComms\UniCommsServer\obj\Debug\UniCommsServer.csproj.CoreCompileInputs.cache
 C:\Users\Kids\mygit\UniComms\UniCommsServer\obj\Debug\UniCommsServer.exe
 C:\Users\Kids\mygit\UniComms\UniCommsServer\obj\Debug\UniCommsServer.pdb
+C:\Users\Kids\mygit\UniCommsTest\UniCommsServer\obj\Debug\UniCommsServer.csprojAssemblyReference.cache
+C:\Users\Kids\mygit\UniCommsTest\UniCommsServer\obj\Debug\UniCommsServer.csproj.CoreCompileInputs.cache
+C:\Users\Kids\mygit\UniCommsTest\UniCommsServer\obj\Debug\UniCommsServer.exe
+C:\Users\Kids\mygit\UniCommsTest\UniCommsServer\obj\Debug\UniCommsServer.pdb
+C:\Users\Kids\mygit\UniCommsTest\UniCommsServer\bin\Debug\UniCommsServer.exe.config
+C:\Users\Kids\mygit\UniCommsTest\UniCommsServer\bin\Debug\UniCommsServer.exe
+C:\Users\Kids\mygit\UniCommsTest\UniCommsServer\bin\Debug\UniCommsServer.pdb

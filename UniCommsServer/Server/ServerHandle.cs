@@ -17,14 +17,14 @@ namespace UniCommsServer.Server
             if (register)
             {
                 User.User newUser = new User.User(username, password);
+                Server.clients[fromClient].user = newUser;
             }
             User.User u = User.User.byUsername(username);
             if (u == null)
             {
                 ServerSend.SendLogin(fromClient, register, false, false);
                 Server.Alert($"{username} is stupid af");
-            }
-            else if(u.password == password)
+            } else if (u.password == password)
             {
                 Server.clients[fromClient].user = u;
                 ServerSend.SendLogin(fromClient, register, true, true);
@@ -40,11 +40,11 @@ namespace UniCommsServer.Server
         {
             int length = p.ReadInt();
             List<User.User> toSend = User.User.users.Values.ToList();
-            User.User u = User.User.users[fromClient];
-            for(int i = 0; i < length; i++)
+            User.User u = Server.clients[fromClient].user;
+            for (int i = 0; i < length; i++)
             {
-                User.User current = User.User.users[i];
                 int id = p.ReadInt();
+                User.User current = User.User.users[id];
                 if (User.User.changedUsers.ContainsKey(id))
                 {
                     if (current.recognizedChange.Contains(u))

@@ -72,7 +72,7 @@ namespace UniCommsServer.Server
         private static string Time {
             get {
                 DateTime n = DateTime.Now;
-                return $"({n.Hour}:{n.Minute}:{n.Second}) ";
+                return $"({n.ToString("HH:mm:ss")}) ";
             }
         }
     }

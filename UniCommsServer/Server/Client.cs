@@ -61,10 +61,10 @@ namespace UniCommsServer.Server
             }
             private void ReceiveCallback(IAsyncResult result)
             {
-                try 
+                try
                 {
                     int byteLength = stream.EndRead(result);
-                    if(byteLength < 0)
+                    if (byteLength < 0)
                     {
                         Disconnect();
                         return;
@@ -73,7 +73,6 @@ namespace UniCommsServer.Server
                     Array.Copy(receiveBuffer, data, byteLength);
                     receivedData.Reset(HandleData(data));
                     stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
-
                 }
                 catch
                 {
@@ -127,7 +126,7 @@ namespace UniCommsServer.Server
 
             public void Disconnect()
             {
-                Server.Alert($"{id} disconnected!");
+                Server.Alert($"{Server.clients[id].user.username} disconnected!");
                 socket.Close();
                 stream = null;
                 receivedData = null;
