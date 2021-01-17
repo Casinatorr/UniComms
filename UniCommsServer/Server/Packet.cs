@@ -9,14 +9,18 @@ namespace UniCommsServer.Server
     {
         ping = 1,
         sendLogin,
-        sendUsers
+        sendUsers,
+        validateRoomLogin,
+        answerRoomCreate
     }
 
     /// <summary>Sent from client to server.</summary>
     public enum ClientPackets
     {
         login = 1,
-        knownUsers
+        knownUsers,
+        createRoom,
+        joinRoom
     }
 
     public class Packet:IDisposable

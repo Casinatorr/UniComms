@@ -60,7 +60,9 @@ namespace UniCommsServer.Server
             packetHandlers = new Dictionary<int, PacketHandler>()
             {
                 {(int)ClientPackets.login, ServerHandle.HandleLogin },
-                {(int)ClientPackets.knownUsers, ServerHandle.HandleKnownUsers }
+                {(int)ClientPackets.knownUsers, ServerHandle.HandleKnownUsers },
+                {(int)ClientPackets.joinRoom, ServerHandle.HandleJoinRoom },
+                {(int)ClientPackets.createRoom, ServerHandle.HandleCreateRoom }
             };
         }
 

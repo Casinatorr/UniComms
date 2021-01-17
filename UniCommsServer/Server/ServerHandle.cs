@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using UniCommsServer.Rooms;
 
 namespace UniCommsServer.Server
 {
@@ -60,6 +61,39 @@ namespace UniCommsServer.Server
             }
 
             ServerSend.SendUsers(fromClient, toSend);
+        }
+
+        public static void HandleCreateRoom(int fromClient, Packet p)
+        {
+            string name = p.ReadString();
+            string password = p.ReadString();
+            Room room = new Room(fromClient, name, password);
+            room.Join(fromClient);
+        }
+
+        public static void HandleJoinRoom(int fromClient, Packet p) 
+        {
+            int id = p.ReadInt();
+            string password = p.ReadString();
+            if (!Room.rooms.ContainsKey(id))
+            {
+                ServerSend.AnswerRoomLogin(fromClient, false, false, null);
+                return;
+            }
+            Room room = Room.rooms[id];
+            if (room.password != password)
+            {
+                ServerSend.AnswerRoomLogin(fromClient, true, false, null);
+                return;
+            }
+            room.Join(fromClient);
+            ServerSend.AnswerRoomLogin(fromClient, true, true, room.users);
+        }
+
+        private enum Chat
+        {
+            PUBLIC,
+            PRIVATE
         }
     }
 }

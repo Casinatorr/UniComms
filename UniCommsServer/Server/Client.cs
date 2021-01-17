@@ -74,7 +74,7 @@ namespace UniCommsServer.Server
                     receivedData.Reset(HandleData(data));
                     stream.BeginRead(receiveBuffer, 0, dataBufferSize, ReceiveCallback, null);
                 }
-                catch
+                catch (Exception e)
                 {
                     Disconnect();
                 }
@@ -126,7 +126,12 @@ namespace UniCommsServer.Server
 
             public void Disconnect()
             {
-                Server.Alert($"{Server.clients[id].user.username} disconnected!");
+                if(Server.clients[id].user != null)
+                    Server.Alert($"{Server.clients[id].user.username} disconnected!");
+                else
+                {
+                    Server.Alert($"{id} disconnected!");
+                }
                 socket.Close();
                 stream = null;
                 receivedData = null;

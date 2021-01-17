@@ -58,5 +58,34 @@ namespace UniCommsServer.Server
                 SendTCPData(toClient, p);
             }
         }
+
+        public static void AnswerRoomLogin(int toClient, bool id, bool password, List<int> members)
+        {
+            using (Packet p = new Packet((int) ServerPackets.validateRoomLogin))
+            {
+                p.Write(id);
+                p.Write(password);
+                if (members == null)
+                {
+                    SendTCPData(toClient, p);
+                    return;
+                }
+                p.Write(members.Count);
+
+                foreach (int m in members)
+                    p.Write(Server.clients[m].user.id);
+
+                SendTCPData(toClient, p);
+            }
+        }
+
+        public static void AnswerRoomCreate(int toClient, int roomId)
+        {
+            using (Packet p = new Packet((int) ServerPackets.answerRoomCreate))
+            {
+                p.Write(roomId);
+                SendTCPData(toClient, p);
+            }
+        }
     }
 }

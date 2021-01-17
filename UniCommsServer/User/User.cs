@@ -44,23 +44,30 @@ namespace UniCommsServer.User
         {
             Stream stream = File.Open("Users.dat", FileMode.Create);
             BinaryFormatter bf = new BinaryFormatter();
-            bf.Serialize(stream, users.Values.ToList());
+            object[] toSerialize = { users.Values.ToList(), currentFreeId};
+            bf.Serialize(stream, toSerialize);
             stream.Close();
         }
 
         public static void Load()
         {
+            Stream stream = null;
             try
             {
                 users.Clear();
-                Stream stream = File.Open("Users.dat", FileMode.Open);
+                stream = File.Open("Users.dat", FileMode.Open);
                 BinaryFormatter bf = new BinaryFormatter();
-                bf.Deserialize(stream);
-                Console.WriteLine(users.Count);
+                currentFreeId = (int) ((object[]) bf.Deserialize(stream))[1];
+                Console.WriteLine($"Loaded {users.Count} users");
             }
             catch
             {
                 Server.Server.Alert("There is no users file to load");
+            }
+            finally
+            {
+                if (stream != null)
+                    stream.Close();
             }
         }
 
